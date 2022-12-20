@@ -5,18 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 
-@Getter @Setter
 @Entity
 @Table(name = "persona")
 public class Persona {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nombre;
 	private String apellido;
 	private String ciudad;
@@ -28,11 +25,11 @@ public class Persona {
 		
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -89,9 +86,6 @@ public class Persona {
 		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", ciudad=" + ciudad + ", bio="
 				+ bio + ", image=" + image + ", backImage=" + backImage + "]";
 	}
-	
-	
-	
 	
 
 }
