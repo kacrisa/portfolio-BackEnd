@@ -17,9 +17,9 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private String ciudad;
-	private Long bio;
-	private Long image;
-	private Long backImage;
+	private String bio;
+	private String image;
+	private String backImage;
 	
 	public Persona() {
 		
@@ -57,27 +57,27 @@ public class Persona {
 		this.ciudad = ciudad;
 	}
 
-	public Long getBio() {
+	public String getBio() {
 		return bio;
 	}
 
-	public void setBio(Long bio) {
+	public void setBio(String bio) {
 		this.bio = bio;
 	}
 
-	public Long getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Long image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
-	public Long getBackImage() {
+	public String getBackImage() {
 		return backImage;
 	}
 
-	public void setBackImage(Long backImage) {
+	public void setBackImage(String backImage) {
 		this.backImage = backImage;
 	}
 
