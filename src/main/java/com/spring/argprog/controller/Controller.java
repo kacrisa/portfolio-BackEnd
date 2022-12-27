@@ -8,6 +8,7 @@ import com.spring.argprog.service.IPersonaService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 	//Repo conectada a la DB
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class Controller {
 	
 	//Injeccion de depencia:
@@ -35,18 +37,23 @@ public class Controller {
 	
     //Requerimientos con POST - Ya con DB
     
-    @PostMapping("/new/persona")
-    public void agregaPersona (@RequestBody Persona pers) {
+    @PostMapping("api/personas")
+    public void crearPersona (@RequestBody Persona pers) {
     	persoServ.crearPersona(pers);
     }
     
-    @GetMapping ("/ver/personas")
+    @GetMapping ("api/personas")
     @ResponseBody
     public List<Persona> verPersonas(){
     	return persoServ.verPersonas();    
     }
     
-    @DeleteMapping ("/delete/{id}")
+    @GetMapping ("api/personas/{id}")
+    public Persona buscarPersona(@PathVariable Long id){
+    	return persoServ.buscarPersona(id);    
+    }
+    
+    @DeleteMapping ("api/personas/{id}")
     public void borrarPersona (@PathVariable Long id) {
     	persoServ.borrarPersona(id);
     }
