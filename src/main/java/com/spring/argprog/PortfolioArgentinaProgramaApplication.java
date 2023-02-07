@@ -1,3 +1,7 @@
+//En este no me acuerdo si estaba bien lo de la base de datos
+//pero empecé a configurar el JWT
+
+
 package com.spring.argprog;
 
 import org.springframework.boot.SpringApplication;
