@@ -10,9 +10,16 @@ import com.spring.argprog.model.Persona;
 
 public interface IPersonaService {
 	
+	//Crear y actualiza
 	public void crearPersona(Persona per);
+	
+	//Trae lista de personas
 	public List<Persona> verPersonas();
+	
+	//Busca persona
 	public Persona buscarPersona(Long id);
+	
+	//Elimina
 	public void borrarPersona(Long id);
 
 }

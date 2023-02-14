@@ -8,6 +8,7 @@ import com.spring.argprog.service.IPersonaService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,25 +38,34 @@ public class Controller {
 	
     //Requerimientos con POST - Ya con DB
     
-    @PostMapping("api/personas")
-    public void crearPersona (@RequestBody Persona pers) {
+	@PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/personas/crear")
+    public String crearPersona (@RequestBody Persona pers) {
     	persoServ.crearPersona(pers);
+    	return "La persona fue creada/actualizada correctamente!";
     }
     
-    @GetMapping ("api/personas")
+    @GetMapping ("/personas/traer")
     @ResponseBody
     public List<Persona> verPersonas(){
     	return persoServ.verPersonas();    
     }
     
-    @GetMapping ("api/personas/{id}")
+    @GetMapping ("/personas/buscar/{id}")
     public Persona buscarPersona(@PathVariable Long id){
     	return persoServ.buscarPersona(id);    
     }
     
-    @DeleteMapping ("api/personas/{id}")
-    public void borrarPersona (@PathVariable Long id) {
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping ("/personas/borrar/{id}")
+    public String borrarPersona (@PathVariable Long id) {
     	persoServ.borrarPersona(id);
+    	return "La persona fue eliminada correctamente!";
+    }
+    
+    @GetMapping ("/personas/buscar/perfil")
+    public Persona buscarPersona(){
+    	return persoServ.buscarPersona((long)1);    
     }
 
 }

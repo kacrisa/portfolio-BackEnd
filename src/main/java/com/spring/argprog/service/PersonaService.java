@@ -1,3 +1,5 @@
+//Implementacion del IPersonaService
+
 package com.spring.argprog.service;
 
 import java.util.List;
@@ -6,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.argprog.model.Persona;
-import com.spring.argprog.repository.PersonaRepository;
+import com.spring.argprog.repository.IPersonaRepository;
 
 @Service
 public class PersonaService implements IPersonaService {
 
 	@Autowired
-	public PersonaRepository persoRepo;
+	public IPersonaRepository persoRepo;
 	
 	
 	@Override
@@ -37,7 +39,5 @@ public class PersonaService implements IPersonaService {
 		persoRepo.deleteById(id);
 		
 	}
-
-
 
 }

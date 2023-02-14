@@ -17,6 +17,7 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private String ciudad;
+	private String posicion;
 	private String bio;
 	private String image;
 	private String backImage;
@@ -81,11 +82,19 @@ public class Persona {
 		this.backImage = backImage;
 	}
 
+	public String getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(String posicion) {
+		this.posicion = posicion;
+	}
+	
+
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", ciudad=" + ciudad + ", bio="
-				+ bio + ", image=" + image + ", backImage=" + backImage + "]";
+				+ bio + ", image=" + image + ", backImage=" + backImage + ", posicion=" + posicion + "]";
 	}
-	
 
 }
