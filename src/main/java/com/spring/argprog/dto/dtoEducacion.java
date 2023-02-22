@@ -1,26 +1,26 @@
 package com.spring.argprog.dto;
 
-
-public class dtoExperiencia {
+public class dtoEducacion {
 	
 	private int id;
-	private String posicionE;
-	private String empresaE;
+	private String escuelaE;
+	private String tituloE;
 	private String dataE;
 	private String descripcionE;
 	private String imagenE;
 	
-	public dtoExperiencia() {
+	public dtoEducacion() {
+		
 	}
 
-	public dtoExperiencia(String posicionE, String empresaE, String dataE, String descripcionE, String imagenE) {
-		this.posicionE = posicionE;
-		this.empresaE = empresaE;
+	public dtoEducacion(String escuelaE, String tituloE, String dataE, String descripcionE, String imagenE) {
+
+		this.escuelaE = escuelaE;
+		this.tituloE = tituloE;
 		this.dataE = dataE;
 		this.descripcionE = descripcionE;
 		this.imagenE = imagenE;
 	}
-
 
 	public int getId() {
 		return id;
@@ -29,21 +29,21 @@ public class dtoExperiencia {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public String getPosicionE() {
-		return posicionE;
+
+	public String getEscuelaE() {
+		return escuelaE;
 	}
 
-	public void setPosicionE(String posicionE) {
-		this.posicionE = posicionE;
+	public void setEscuelaE(String escuelaE) {
+		this.escuelaE = escuelaE;
 	}
 
-	public String getEmpresaE() {
-		return empresaE;
+	public String getTituloE() {
+		return tituloE;
 	}
 
-	public void setEmpresaE(String empresaE) {
-		this.empresaE = empresaE;
+	public void setTituloE(String tituloE) {
+		this.tituloE = tituloE;
 	}
 
 	public String getDataE() {
@@ -69,6 +69,5 @@ public class dtoExperiencia {
 	public void setImagenE(String imagenE) {
 		this.imagenE = imagenE;
 	}
-	
-	
+
 }
