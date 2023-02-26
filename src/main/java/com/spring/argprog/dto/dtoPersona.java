@@ -1,39 +1,21 @@
-package com.spring.argprog.model;
+package com.spring.argprog.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-
-@Entity
-@Table(name = "persona")
-public class Persona {
+public class dtoPersona {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String apellido;
 	private String ciudad;
 	private String posicion;
-	
-	@Column(length=2000)
 	private String bio;
-	
-	@Column(length=2000)
 	private String image;
-	
-	@Column(length=2000)
 	private String backImage;
 	
-	public Persona() {
+	public dtoPersona() {
 		
 	}
 
-	public Persona(String nombre, String apellido, String ciudad, String posicion, String bio, String image,
+	public dtoPersona(String nombre, String apellido, String ciudad, String posicion, String bio, String image,
 			String backImage) {
 		
 		this.nombre = nombre;
@@ -108,9 +90,8 @@ public class Persona {
 	public void setBackImage(String backImage) {
 		this.backImage = backImage;
 	}
-
 	
-
+	
 	
 
 }

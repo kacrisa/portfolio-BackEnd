@@ -2,20 +2,24 @@ package com.spring.argprog.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.argprog.dto.dtoPersona;
+
 import com.spring.argprog.model.Persona;
-import com.spring.argprog.service.IPersonaService;
+import com.spring.argprog.security.controller.Mensaje;
+import com.spring.argprog.service.SPersona;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 //Creando un @Controller
     //El nuevo paquete creado representará la capa controladora del proyecto
@@ -25,45 +29,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 	//El servicio conectado al repo
 	//Repo conectada a la DB
 
+@RequestMapping("/persona")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class Controller {
+public class CPersona {
 	
 	//Injeccion de depencia:
 	@Autowired
-	
-	//Implementacion de la interface:
-	private IPersonaService persoServ;
-	
-	
-    //Requerimientos con POST - Ya con DB
+	SPersona persoServ;
     
-	@PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/personas/crear")
-    public String crearPersona (@RequestBody Persona pers) {
-    	persoServ.crearPersona(pers);
-    	return "La persona fue creada/actualizada correctamente!";
+    @GetMapping ("/listar")
+
+	public ResponseEntity<List<Persona>> list(){
+		List<Persona> list = persoServ.list();
+		return new ResponseEntity(list, HttpStatus.OK);
+	}
+    
+    @PostMapping("/crear")
+    public ResponseEntity<?> crearPersona (@RequestBody dtoPersona pers) {
+    	
+		Persona Persona = new Persona(pers.getNombre(), pers.getApellido(), pers.getCiudad(), pers.getPosicion(), pers.getBio(), pers.getImage(), pers.getBackImage());
+		Persona.setId(pers.getId());
+		persoServ.crearPersona(Persona);
+		
+		return new ResponseEntity(new Mensaje("Persona creada/actualizada"), HttpStatus.OK);
     }
     
-    @GetMapping ("/personas/traer")
-    @ResponseBody
-    public List<Persona> verPersonas(){
-    	return persoServ.verPersonas();    
-    }
     
-    @GetMapping ("/personas/buscar/{id}")
-    public Persona buscarPersona(@PathVariable Long id){
-    	return persoServ.buscarPersona(id);    
-    }
-    
-    @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping ("/personas/borrar/{id}")
+    @DeleteMapping ("/borrar/{id}")
     public String borrarPersona (@PathVariable Long id) {
     	persoServ.borrarPersona(id);
     	return "La persona fue eliminada correctamente!";
     }
     
-    @GetMapping ("/personas/buscar/perfil")
+    @GetMapping ("/buscar/perfil")
     public Persona buscarPersona(){
     	return persoServ.buscarPersona((long)1);    
     }

@@ -1,5 +1,6 @@
 package com.spring.argprog.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,11 @@ public class Experiencia {
 	private String posicionE;
 	private String empresaE;
 	private String dataE;
+	
+	@Column(length=2000)
 	private String descripcionE;
+	
+	@Column(length=2000)
 	private String imagenE;
 	
 	

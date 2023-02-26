@@ -8,36 +8,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.argprog.model.Persona;
-import com.spring.argprog.repository.IPersonaRepository;
+import com.spring.argprog.repository.RPersona;
+
+import jakarta.transaction.Transactional;
 
 @Service
-public class PersonaService implements IPersonaService {
+@Transactional
+public class SPersona {
 
 	@Autowired
-	public IPersonaRepository persoRepo;
+	RPersona persoRepo;
 	
+	public List<Persona> list() {
+		return persoRepo.findAll();
+		
+	}
 	
-	@Override
 	public void crearPersona(Persona per) {
 		persoRepo.save(per);
 		
 	}
 
-	@Override
-	public List<Persona> verPersonas() {
-		return persoRepo.findAll();
-		
-	}
 
-	@Override
 	public Persona buscarPersona(Long id) {
 		return persoRepo.findById(id).orElse(null);
 	}
 	
-	@Override
+	
 	public void borrarPersona(Long id) {
 		persoRepo.deleteById(id);
 		
 	}
+	
 
 }
