@@ -30,6 +30,7 @@ com\spring\argprog\model\Experiencia.class
 com\spring\argprog\model\Habilidades.class
 com\spring\argprog\security\repository\iRolRepository.class
 com\spring\argprog\security\jwt\JwtProvider.class
+com\spring\argprog\WebConfig.class
 com\spring\argprog\security\controller\Mensaje.class
 com\spring\argprog\security\MainSecurity.class
 com\spring\argprog\repository\RExperiencia.class
