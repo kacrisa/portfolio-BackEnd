@@ -21,7 +21,8 @@ import com.spring.argprog.service.SIdiomas;
 
 @RequestMapping("/idiomas")
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://portf-kacrisa.web.app/"})
+
 public class CIdiomas {
 	
 	@Autowired

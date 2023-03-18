@@ -21,7 +21,7 @@ import com.spring.argprog.service.SEducacion;
 
 @RequestMapping("/educacion")
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://portf-kacrisa.web.app/"})
 
 public class CEducacion {
 
